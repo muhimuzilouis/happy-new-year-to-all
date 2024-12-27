@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bonne Année 2024</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Bonne et heureuse année 2025 ! 🎉</h1>
+    <p>svp si vous aimez ce souhait, cliquez sur le bouton "J'aime" ci-dessous !</p>
+
+    <!-- Bouton J'aime -->
+    <button id="likeButton">
+      ❤️ J'aime <span id="likeCount">0</span>
+    </button>
+
+    <!-- Formulaire pour laisser un commentaire -->
+    <div class="comment-section">
+      <h2>Envoyez-moi vos commentaires :</h2>
+      <form id="commentForm">
+        <textarea id="comment" placeholder="Écrivez votre commentaire ici..." required></textarea>
+        <input type="email" id="email" placeholder="Votre e-mail (optionnel)" />
+        <button type="submit">Envoyer</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: #f0f8ff;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  color: #4CAF50;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+#likeButton span {
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+.comment-section {
+  margin-top: 30px;
+}
+
+textarea, input[type="email"] {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+textarea {
+  height: 100px;
+  resize: none;
+}
+
+form button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+form button:hover {
+  background-color: #45a049;
+}
+
+form button:active {
+  transform: scale(0.98);
+}
+</style>
+
+
+
+<script>
+
+let likeCount = 0; // Initialisation du compteur de "J'aime"
+
+const likeButton = document.getElementById("likeButton");
+const likeCountElement = document.getElementById("likeCount");
+const commentForm = document.getElementById("commentForm");
+
+// Gestionnaire d'événement pour le bouton "J'aime"
+likeButton.addEventListener("click", () => {
+  likeCount++; // Incrémenter le compteur
+  likeCountElement.textContent = likeCount; // Mettre à jour le compteur affiché
+  likeButton.style.backgroundColor = "#ff6347"; // Changer la couleur du bouton
+  likeButton.textContent = `❤️ J'aime ${likeCount}`; // Ajouter le compteur sur le bouton
+});
+
+// Gestionnaire d'événement pour le formulaire de commentaire
+commentForm.addEventListener("submit", (e) => {
+  e.preventDefault(); // Empêcher le rechargement de la page
+
+  const comment = document.getElementById("comment").value;
+  const email = document.getElementById("email").value;
+
+  if (comment.trim() === "") {
+    alert("Veuillez entrer un commentaire !");
+    return;
+  }
+
+  // Préparer le contenu de l'e-mail
+  const emailBody = `
+    Bonjour Louis Muhumuzi,
+    
+    Vous avez reçu un nouveau commentaire :
+    
+    ${comment}
+    
+    De : ${email || "Anonyme"}
+  `;
+
+  // Envoyer l'e-mail via un lien mailto
+  const mailtoLink = `mailto:muhimuzilouis285@gmail.com?subject=Nouveau commentaire Bonne Année&body=${encodeURIComponent(emailBody)}`;
+  window.location.href = mailtoLink;
+
+  // Réinitialiser le formulaire
+  commentForm.reset();
+  alert("Votre commentaire a été envoyé avec succès !");
+});
+</script>

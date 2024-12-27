@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meilleurs Vœux aux Étudiants de l'ISP/Bukavu</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Meilleurs Vœux et Happy News!</h1>
+        <p>Chers étudiants de l'ISP/Bukavu, nous vous souhaitons le meilleur pour cette année!</p>
+        <h1><button id="newsButton"> <h4>Cliquez pour afficher les Nouvelles</h1></button></h4>
+        <div id="news" class="news"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+    border: 2px solid #4CAF50;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #4CAF50;
+}
+
+.news {
+    margin-top: 20px;
+    display: none;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #f9f9f9;
+}
+</style>
+<script>
+
+document.getElementById('newsButton').addEventListener('click', function() {
+    const newsDiv = document.getElementById('news');
+    if (newsDiv.style.display === 'none' || newsDiv.style.display === '') {
+        newsDiv.style.display = 'block';
+        newsDiv.innerHTML = '<h2>Nos souhaits pour vous</h2><p>1. Bénédiction !</p><p>2. Succès etc.</p>';
+    } else {
+        newsDiv.style.display = 'none';
+    }
+});
+</script>
+
+<body>
+    <div class="container">
+        <h1>🌺 Meilleurs Vœux pour 2025! 🌺</h1>
+        <p>Que cette année soit remplie de joie, d'amour et de prospérité!</p>
+        <button id="wishesButton"> <h4>Cliquez pour afficher afficher les Vœux</h4></button>
+        <div id="wishes" class="wishes"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+```
+
+<style>
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to right, #ffebee, #fce4ec);
+    color: #4a148c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+    border: 2px solid #f50057;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+.wishes {
+    margin-top: 20px;
+    display: none;
+    border: 1px solid #f50057;
+    padding: 10px;
+    background-color: #ffe0f2;
+    border-radius: 5px;
+}
+
+.flower {
+    position: absolute;
+    animation: bloom 2s forwards;
+}
+
+@keyframes bloom {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+</style>
+<script>
+document.getElementById('wishesButton').addEventListener('click', function() {
+    const wishesDiv = document.getElementById('wishes');
+    if (wishesDiv.style.display === 'none' || wishesDiv.style.display === '') {
+        wishesDiv.style.display = 'block';
+        wishesDiv.innerHTML = '<h2>Vœux pour Vous!</h2><p>1. Santé et Bonheur!</p><p>2. Amour et Amitié!</p><p>3. Réussite et Prospérité!</p>';
+        generateFlowers();
+    } else {
+        wishesDiv.style.display = 'none';
+    }
+});
+
+function generateFlowers() {
+    const container = document.querySelector('.container');
+    for (let i = 0; i < 10; i++) {
+        const flower = document.createElement('div');
+        flower.className = 'flower';
+        flower.style.backgroundImage = 'url("https://example.com/your-flower-image.png")'; // Remplacez par l'URL de votre image de fleur
+        flower.style.width = '50px';
+        flower.style.height = '50px';
+        flower.style.top = Math.random() * 100 + 'vh';
+        flower.style.left = Math.random() * 100 + 'vw';
+        flower.style.position = 'absolute';
+        flower.style.backgroundSize = 'contain';
+        flower.style.backgroundRepeat = 'no-repeat';
+        flower.style.animationDelay = Math.random() * 2 + 's';
+        container.appendChild(flower);
+
+        flower.addEventListener('animationend', () => {
+            container.removeChild(flower);
+        });
+    }
+}
+</script>
