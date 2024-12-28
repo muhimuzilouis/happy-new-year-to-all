@@ -1,0 +1,112 @@
+
+<body>
+    <div class="container">
+        <h1>Happy New Year 2025</h1>
+        <div class="uploader">
+            <p>Veuillez télécharger votre photo :</p>
+            <input type="file" id="photoInput" accept="image/*">
+        </div>
+        <div id="card" class="card hidden">
+            <img id="userPhoto" alt="User's Photo">
+            <div class="message">
+                <p>🎉 Happy New Year 2025 A tous les étudiants 🎉</p>
+                <p>Que cette nouvelle année soit remplie de bonheur et de succès !</p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+ 
+
+<style>
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f0f8ff;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    padding: 20px;
+}
+
+h1 {
+    color: #0078d4;
+}
+
+.uploader p {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+input[type="file"] {
+    margin-bottom: 20px;
+}
+
+.card {
+    margin: 20px auto;
+    padding: 20px;
+    border: 2px solid #0078d4;
+    border-radius: 10px;
+    background-color: #fff;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card.hidden {
+    display: none;
+}
+
+.card img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.message p {
+    font-size: 16px;
+    color: #0078d4;
+    margin: 5px 0;
+}
+</style>
+
+
+
+
+
+<script>
+
+document.getElementById("photoInput").addEventListener("change", function(event) {
+    const file = event.target.files[0];
+
+    if (file && file.type.startsWith("image/")) {
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+            const userPhoto = document.getElementById("userPhoto");
+            const card = document.getElementById("card");
+
+            userPhoto.src = e.target.result;
+            card.classList.remove("hidden");
+        };
+
+        reader.readAsDataURL(file);
+    } else {
+        alert("Veuillez télécharger un fichier d'image valide.");
+    }
+});
+
+</script>
+
+
+
+
+
+
+
+
