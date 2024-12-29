@@ -23,6 +23,35 @@
         </div>
     
 <style>
+    @media (min-width: 1024px) {
+    body {
+        font-size: 18px; /* Texte plus grand */
+    }
+}
+
+/* Écrans de tablette */
+@media (max-width: 1024px) {
+    body {
+        font-size: 16px;
+    }
+
+    .menu {
+        display: flex;
+        flex-direction: column; /* Menu vertical */
+    }
+}
+
+/* Écrans de smartphone */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+
+    .header {
+        text-align: center; /* Centrer le contenu */
+    }
+}
+
         body {
             font-family: sans-serif;
            
