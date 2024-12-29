@@ -23,51 +23,6 @@
         </div>
     
 <style>
-    body {
-    font-size: 16px; /* Base de 16px */
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-.container {
-    max-width: 1200px; /* Limite la largeur maximale */
-    width: 100%; /* S'étire selon la taille de l'écran */
-    margin: 0 auto;
-    padding: 0 15px;
-}
-
-
-
-    
-    .media (min-width: 1024px) {
-    body {
-        font-size: 18px; /* Texte plus grand */
-    }
-}
-
-/* Écrans de tablette */
-   .media (max-width: 1024px) {
-    body {
-        font-size: 16px;
-    }
-
-    .menu {
-        display: flex;
-        flex-direction: column; /* Menu vertical */
-    }
-}
-
-/* Écrans de smartphone */
-media (max-width: 768px) {
-    body {
-        font-size: 14px;
-    }
-
-    .header {
-        text-align: center; /* Centrer le contenu */
-    }
-}
 
         body {
             font-family: sans-serif;
@@ -199,6 +154,101 @@ media (max-width: 768px) {
                 }
 </style>             
  </nav>
+            <style>
+                body {
+    font-size: 16px; /* Base de 16px */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 1200px; /* Limite la largeur maximale */
+    width: 100%; /* S'étire selon la taille de l'écran */
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap; /* Permet de passer à une ligne suivante si nécessaire */
+    gap: 16px; /* Espacement entre les éléments */
+}
+
+.flex-item {
+    flex: 1 1 calc(33.333% - 16px); /* Trois colonnes */
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    .flex-item {
+        flex: 1 1 calc(50% - 16px); /* Deux colonnes pour les tablettes */
+    }
+}
+
+@media (max-width: 480px) {
+    .flex-item {
+        flex: 1 1 100%; /* Une colonne pour les petits écrans */
+    }
+}
+
+
+@media (min-width: 1024px) {
+    body {
+        font-size: 18px; /* Texte plus grand */
+    }
+}
+
+
+@media (max-width: 1024px) {
+    body {
+        font-size: 16px;
+    }
+
+    .menu {
+        display: flex;
+        flex-direction: column; /* Menu vertical */
+    }
+}
+
+
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+
+    .header {
+        text-align: center; /* Centrer le contenu */
+    }
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Trois colonnes */
+    gap: 16px;
+}
+
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr); /* Deux colonnes */
+    }
+}
+
+@media (max-width: 480px) {
+    .grid-container {
+        grid-template-columns: 1fr; /* Une colonne */
+    }
+}
+Css
+Image et vidéo responsive 
+img, video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+</style>
+            
 
  
 </body>
