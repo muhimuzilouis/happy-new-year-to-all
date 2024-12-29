@@ -1,24 +1,35 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy New Year 2025</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
 <body>
     <div class="container">
-        <h1>Happy New Year 2025</h1>
-        <div class="uploader">
-            <p>Veuillez télécharger votre photo :</p>
-            <input type="file" id="photoInput" accept="image/*">
+        <h1>🎉 Happy New Year 2025 🎉</h1>
+        <div class="form">
+            <label for="nameInput">Entrez votre nom :</label>
+            <input type="text" id="nameInput" placeholder="Votre nom" required>
+            
+            <label for="photoInput">Téléchargez votre photo :</label>
+            <input type="file" id="photoInput" accept="image/*" required>
+            
+            <button id="generateButton">Voir mes vœux</button>
         </div>
         <div id="card" class="card hidden">
-            <img id="userPhoto" alt="User's Photo">
+            <img id="userPhoto" alt="Votre photo">
             <div class="message">
-                <p>🎉 Happy New Year 2025 A tous les étudiants 🎉</p>
-                <p>Que cette nouvelle année soit remplie de bonheur et de succès !</p>
+                <h2 id="userName"></h2>
+                <p>🎆 Que cette nouvelle année soit remplie de bonheur, de succès, et de joie ! 🎆</p>
+                <p>✨ Une surprise spéciale pour vous : <span id="surprise">🎁 Cliquez ici !</span></p>
             </div>
         </div>
     </div>
     <script src="script.js"></script>
 </body>
 </html>
-
- 
 
 <style>
 
@@ -33,28 +44,55 @@ body {
 
 .container {
     padding: 20px;
+    max-width: 600px;
+    margin: auto;
 }
 
 h1 {
     color: #0078d4;
-}
-
-.uploader p {
-    font-size: 18px;
-    margin-bottom: 10px;
-}
-
-input[type="file"] {
     margin-bottom: 20px;
 }
 
+.form {
+    margin-bottom: 20px;
+}
+
+.form label {
+    display: block;
+    font-size: 18px;
+    margin: 10px 0 5px;
+}
+
+input[type="text"], input[type="file"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #0078d4;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #005bb5;
+}
+
 .card {
-    margin: 20px auto;
+    margin-top: 20px;
     padding: 20px;
     border: 2px solid #0078d4;
     border-radius: 10px;
     background-color: #fff;
-    width: 300px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -68,45 +106,54 @@ input[type="file"] {
     margin-bottom: 20px;
 }
 
+.message h2 {
+    color: #0078d4;
+    margin-bottom: 10px;
+}
+
 .message p {
     font-size: 16px;
-    color: #0078d4;
     margin: 5px 0;
+    color: #0078d4;
+}
+
+#surprise {
+    color: red;
+    font-weight: bold;
+    cursor: pointer;
 }
 </style>
-
-
-
-
-
 <script>
 
-document.getElementById("photoInput").addEventListener("change", function(event) {
-    const file = event.target.files[0];
+document.getElementById("generateButton").addEventListener("click", function() {
+    const name = document.getElementById("nameInput").value;
+    const fileInput = document.getElementById("photoInput");
+    const file = fileInput.files[0];
 
-    if (file && file.type.startsWith("image/")) {
-        const reader = new FileReader();
-
-        reader.onload = function(e) {
-            const userPhoto = document.getElementById("userPhoto");
-            const card = document.getElementById("card");
-
-            userPhoto.src = e.target.result;
-            card.classList.remove("hidden");
-        };
-
-        reader.readAsDataURL(file);
-    } else {
-        alert("Veuillez télécharger un fichier d'image valide.");
+    if (!name) {
+        alert("Veuillez entrer votre nom.");
+        return;
     }
+
+    if (!file || !file.type.startsWith("image/")) {
+        alert("Veuillez télécharger une photo valide.");
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        // Affichage de la carte
+        document.getElementById("userName").textContent = `Bonne Année, ${name} !`;
+        document.getElementById("userPhoto").src = e.target.result;
+        document.getElementById("card").classList.remove("hidden");
+    };
+
+    reader.readAsDataURL(file);
 });
 
+// Surprise : afficher une alerte spéciale
+document.getElementById("surprise").addEventListener("click", function() {
+    alert("🎉 Surpriiise ! Que cette année soit la meilleure de votre vie ! 🎆");
+});
 </script>
-
-
-
-
-
-
-
 
