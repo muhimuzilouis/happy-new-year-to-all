@@ -4,69 +4,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bienvenue en 2025</title>
-<body>
-    
-    
-        <div class="message-container">
-            <br><h1>🎄HAPPY NEW YEAR🎄</h1>
-            <img src="img/téléchargement.jpeg" alt="">
-            <img src="img/téléchargement.jpeg" alt="">
-            <img src="img/téléchargement.jpeg" alt="">
-            
-            <p>Nous vous souhaitons nos voeux les meilleurs rempli de joie, d'amour et de bonheur. Merci de visiter notre site  !</p>
-            <p>
-                <span class="snowflake">❄️</span>
-                <span class="snowflake">❄️</span>
-                <span class="snowflake">❄️</span>
-            </p>
-            
-        </div>
-    
-<style>
-
-        body {
-            font-family: sans-serif;
-           
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"> <!-- Google Font -->
+    <style>
+        /* Reset */
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        /* Corps de la page */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            flex-direction: column; /* Pour centrer verticalement */
-        }
-
-        .container {
+            flex-direction: column;
             text-align: center;
-            padding: 40px;
-           
+            padding: 0 20px;
+        }
+
+        /* Conteneur principal */
+        .message-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
 
+        /* Titre */
         h1 {
-            margin: bottom 50px;
+            font-size: 2.5em;
+            color: #008080;
+            margin-bottom: 20px;
         }
 
-        .message {
+        /* Image */
+        .message-container img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        /* Texte */
+        p {
             font-size: 1.2em;
-
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
 
-        .year {
-          font-size: 2em;
-          font-weight: bold;
-          margin-bottom: 20px;
-        }
-
-        /* Styles pour les décorations de Noël (exemples) */
+        /* Flocons de neige */
         .snowflake {
             position: absolute;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
+            font-size: 24px;
             opacity: 0.7;
-            animation: snowfall 5s linear infinite; /* Animation de chute de neige */
+            animation: snowfall 5s linear infinite;
         }
 
         @keyframes snowfall {
@@ -74,183 +70,92 @@
             100% { transform: translateY(100vh); opacity: 0.7;}
         }
 
-        /* Positionnement aléatoire des flocons */
+        /* Définition des flocons de neige */
         .snowflake:nth-child(1) { left: 10%; animation-delay: 0s;}
         .snowflake:nth-child(2) { left: 30%; animation-delay: 1s;}
         .snowflake:nth-child(3) { left: 50%; animation-delay: 2s;}
         .snowflake:nth-child(4) { left: 70%; animation-delay: 0.5s;}
         .snowflake:nth-child(5) { left: 90%; animation-delay: 1.5s;}
 
-        /* Ajoute d'autres flocons ici en modifiant left et animation-delay */
-        /* Exemple avec image de fond */
+        /* Boutons de navigation */
+        button {
+            background-color: #008080;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 1.1em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin: 10px;
+        }
+
+        button:hover {
+            background-color: #004d4d;
+        }
+
+        /* Style pour les boutons et lien */
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .message-container {
+                padding: 15px;
+            }
+
+            button {
+                width: 100%;
+                padding: 15px;
+            }
+
+            p {
+                font-size: 1em;
+            }
+        }
+
+        /* Image d'arrière-plan */
         .background-image {
-          background-image: url('url_de_votre_image.jpg'); /* Remplacez par l'URL de votre image */
-          background-size: cover;
-          background-position: center;
-          position: fixed; /* Pour que l'image reste fixe en arrière-plan */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('url_de_votre_image.jpg');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
         }
     </style>
 </head>
-</body>
-  <div class="background-image"></div>
-    <div class="container">
-        <h1>Bienvenue sur notre site !
-            <p><h4>MUHIMUZI LOUIS </h4></p>
-        </h1>
 <body>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Resume - Start Bootstrap Theme</title>
-        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
-        <!-- Font Awesome icons (free version)-->
-        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-        <!-- Google fonts-->
-        <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
-    </head>
-    <body>
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
-            <a class="navbar-brand js-scroll-trigger" href="#page-top">
-                <span class="d-block d-lg-none">Clarence Taylor</span>
-                <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="img/Photoroom-20241225_123759~2.png" alt="" /></span>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-            </div>
-<nav>
-            <button><a href="Souhait.html"><h6>Give your review here</h6>  </a></button>
-            <button><a href="A propos.html"><h6>Wish one</h6></a></button>
-            <button><a href="télécharger.html"><h6>Download your wish</h6></a></button>
-            <button><a href="voeux.html"><h6>Wish two</h6></a></button>
-            <br><h3 id="message">✨ Joyeuse Bonne Année 2025 ! ✨</h3>
-            <style>
-                body {
-                
-                font-family: Arial, sans-serif;
-                min-height: 100vh;
-                margin: 0;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                }
-                
-                nav button {  
-                border: none;
-                padding: 10px 20px;
-                margin: 5px;
-                cursor: pointer;
-                border-radius: 5px;
-                }
-                button{
-                    color: black;
-            
-                }
-</style>             
- </nav>
-            <style>
-                body {
-    font-size: 16px; /* Base de 16px */
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+    <div class="background-image"></div>
+    <div class="message-container">
+        <h1>🎄HAPPY NEW YEAR 2025🎄</h1>
+        <img src="img/téléchargement.jpeg" alt="image de fête">
+        <p>Nous vous souhaitons nos voeux les meilleurs, remplis de joie, d'amour et de bonheur. Merci de visiter notre site !</p>
+        <p>
+            <span class="snowflake">❄️</span>
+            <span class="snowflake">❄️</span>
+            <span class="snowflake">❄️</span>
+        </p>
+        <div>
+            <button><a href="Souhait.html">Give your review here</a></button>
+            <button><a href="A propos.html">Wish one</a></button>
+            <button><a href="télécharger.html">Download your wish</a></button>
+            <button><a href="voeux.html">Wish two</a></button>
+        </div>
+        <br><h3>✨ Joyeuse Bonne Année 2025 ! ✨</h3>
+    </div>
+</body>
+</html>
 
-.container {
-    max-width: 1200px; /* Limite la largeur maximale */
-    width: 100%; /* S'étire selon la taille de l'écran */
-    margin: 0 auto;
-    padding: 0 15px;
-}
-
-.flex-container {
-    display: flex;
-    flex-wrap: wrap; /* Permet de passer à une ligne suivante si nécessaire */
-    gap: 16px; /* Espacement entre les éléments */
-}
-
-.flex-item {
-    flex: 1 1 calc(33.333% - 16px); /* Trois colonnes */
-    box-sizing: border-box;
-}
-
-@media (max-width: 768px) {
-    .flex-item {
-        flex: 1 1 calc(50% - 16px); /* Deux colonnes pour les tablettes */
-    }
-}
-
-@media (max-width: 480px) {
-    .flex-item {
-        flex: 1 1 100%; /* Une colonne pour les petits écrans */
-    }
-}
-
-
-@media (min-width: 1024px) {
-    body {
-        font-size: 18px; /* Texte plus grand */
-    }
-}
-
-
-@media (max-width: 1024px) {
-    body {
-        font-size: 16px;
-    }
-
-    .menu {
-        display: flex;
-        flex-direction: column; /* Menu vertical */
-    }
-}
-
-
-@media (max-width: 768px) {
-    body {
-        font-size: 14px;
-    }
-
-    .header {
-        text-align: center; /* Centrer le contenu */
-    }
-}
-
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Trois colonnes */
-    gap: 16px;
-}
-
-@media (max-width: 768px) {
-    .grid-container {
-        grid-template-columns: repeat(2, 1fr); /* Deux colonnes */
-    }
-}
-
-@media (max-width: 480px) {
-    .grid-container {
-        grid-template-columns: 1fr; /* Une colonne */
-    }
-}
-Css
-Image et vidéo responsive 
-img, video {
-    max-width: 100%;
-    height: auto;
-    display: block;
-}
-
-</style>
-            
-
- 
 </body>
 </html>
 
@@ -574,8 +479,3 @@ img, video {
 
 
 
-<!DOCTYPE html>
-<html lang="en">
-    
-</body>
-        
