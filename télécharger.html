@@ -25,6 +25,8 @@
         <div id="card" class="card hidden">
             <canvas id="wishCanvas"></canvas>
             <div class="actions">
+                <canvas id="canvas" class="hidden"></canvas>
+                <a id="downloadLink" class="hidden" download="photo_avec_date.png">Télécharger la photo</a>
                 <button id="downloadButton">Télécharger la carte</button>
                 <button id="shareButton">Partager la carte</button>
                 <button id="inviteButton">Inviter d'autres via https://happy-new-year-to-all.onrender.com </button>
@@ -128,6 +130,31 @@ canvas {
 .actions {
     margin-top: 20px;
 }
+    
+canvas {
+    margin-top: 20px;
+    max-width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+a:hover {
+    background-color: #555;
+}
+
+.hidden {
+    display: none;
+}
 </style>
 
 
@@ -226,6 +253,60 @@ document.getElementById("inviteButton").addEventListener("click", function () {
         });
     } else {
         alert(`Invitez vos amis avec ce lien : ${siteUrl}`);
+    }
+});
+
+
+    
+document.getElementById("photoInput").addEventListener("change", function (event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+            const img = new Image();
+            img.src = e.target.result;
+
+            img.onload = function () {
+                const canvas = document.getElementById("canvas");
+                const ctx = canvas.getContext("2d");
+
+                // Définir la taille du canvas selon l'image
+                canvas.width = img.width;
+                canvas.height = img.height;
+
+                // Dessiner l'image sur le canvas
+                ctx.drawImage(img, 0, 0);
+
+                // Obtenir la date et l'heure actuelles
+                const now = new Date();
+                const date = now.toLocaleDateString("fr-FR");
+                const time = now.toLocaleTimeString("fr-FR");
+
+                // Ajouter la date et l'heure sur la photo
+                ctx.font = "bold 30px Arial";
+                ctx.fillStyle = "white";
+                ctx.strokeStyle = "black";
+                ctx.lineWidth = 2;
+
+                const text = `${date} ${time}`;
+                const x = 20;
+                const y = img.height - 40;
+
+                ctx.strokeText(text, x, y); // Contour noir pour rendre le texte visible
+                ctx.fillText(text, x, y);   // Texte blanc
+
+                // Rendre le canvas visible
+                canvas.classList.remove("hidden");
+
+                // Activer le bouton de téléchargement
+                const downloadLink = document.getElementById("downloadLink");
+                downloadLink.href = canvas.toDataURL("image/png");
+                downloadLink.classList.remove("hidden");
+            };
+        };
+
+        reader.readAsDataURL(file);
     }
 });
 </script>
