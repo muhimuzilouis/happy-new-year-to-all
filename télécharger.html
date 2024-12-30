@@ -10,6 +10,11 @@
     <div class="container">
         <h1>🎉 Happy New Year 2025 🎉</h1>
         <div class="form">
+            <div class="message">
+                <h2 id="userName"></h2>
+                <p>🎆 Que cette nouvelle année soit remplie de bonheur, de succès, et de joie ! 🎆</p>
+                <p>✨ Une surprise spéciale pour vous : <span id="surprise">🎁 Cliquez ici !</span></p>
+            </div>
             <label for="nameInput">Entrez votre nom :</label>
             <input type="text" id="nameInput" placeholder="Votre nom" required>
             
@@ -19,17 +24,24 @@
             <button id="generateButton">Voir mes vœux</button>
         </div>
         <div id="card" class="card hidden">
-            <img id="userPhoto" alt="Votre photo">
-            <div class="message">
-                <h2 id="userName"></h2>
-                <p>🎆 Que cette nouvelle année soit remplie de bonheur, de succès, et de joie ! 🎆</p>
-                <p>✨ Une surprise spéciale pour vous : <span id="surprise">🎁 Cliquez ici !</span></p>
+            <canvas id="wishCanvas"></canvas>
+            <div class="actions">
+                <button id="downloadButton">Télécharger la carte</button>
+                <button id="shareButton">Partager la carte</button>
+                <button id="inviteButton">Inviter d'autres via https://happy-new-year-to-all.onrender.com </button>
             </div>
         </div>
     </div>
     <script src="script.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
 
 <style>
 
@@ -40,6 +52,12 @@ body {
     color: #333;
     margin: 0;
     padding: 0;
+}
+
+#surprise {
+    color: red;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 .container {
@@ -81,6 +99,7 @@ button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin: 5px;
 }
 
 button:hover {
@@ -100,32 +119,23 @@ button:hover {
     display: none;
 }
 
-.card img {
-    max-width: 100%;
+canvas {
+    display: block;
+    margin: 20px auto;
+    border: 2px solid #0078d4;
     border-radius: 10px;
-    margin-bottom: 20px;
 }
 
-.message h2 {
-    color: #0078d4;
-    margin-bottom: 10px;
-}
-
-.message p {
-    font-size: 16px;
-    margin: 5px 0;
-    color: #0078d4;
-}
-
-#surprise {
-    color: red;
-    font-weight: bold;
-    cursor: pointer;
+.actions {
+    margin-top: 20px;
 }
 </style>
+
+
+
 <script>
 
-document.getElementById("generateButton").addEventListener("click", function() {
+document.getElementById("generateButton").addEventListener("click", function () {
     const name = document.getElementById("nameInput").value;
     const fileInput = document.getElementById("photoInput");
     const file = fileInput.files[0];
@@ -141,19 +151,82 @@ document.getElementById("generateButton").addEventListener("click", function() {
     }
 
     const reader = new FileReader();
-    reader.onload = function(e) {
-        // Affichage de la carte
-        document.getElementById("userName").textContent = `Bonne Année, ${name} !`;
-        document.getElementById("userPhoto").src = e.target.result;
-        document.getElementById("card").classList.remove("hidden");
-    };
+    reader.onload = function (e) {
+        const canvas = document.getElementById("wishCanvas");
+        const ctx = canvas.getContext("2d");
 
+        // Définir les dimensions du canvas
+        canvas.width = 600;
+        canvas.height = 800;
+
+        // Fond
+        ctx.fillStyle = "#f0f8ff";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Dessiner l'image
+        const img = new Image();
+        img.src = e.target.result;
+        img.onload = function () {
+            const imgWidth = 400;
+            const imgHeight = 400;
+            ctx.drawImage(img, (canvas.width - imgWidth) / 2, 50, imgWidth, imgHeight);
+
+            // Ajouter du texte
+            ctx.fillStyle = "#0078d4";
+            ctx.font = "bold 24px Arial";
+            ctx.textAlign = "center";
+            ctx.fillText(`Bonne Année, ${name} !`, canvas.width / 2, 500);
+
+            ctx.font = "20px Arial";
+            ctx.fillText("🎆 Que cette année soit remplie de bonheur et de joie ! 🎆", canvas.width / 2, 550);
+
+            ctx.font = "18px Arial";
+            ctx.fillText("✨ Happy New Year 2025 ✨", canvas.width / 2, 600);
+
+            // Afficher la carte
+            document.getElementById("card").classList.remove("hidden");
+        };
+    };
     reader.readAsDataURL(file);
 });
+
+// Télécharger la carte
+document.getElementById("downloadButton").addEventListener("click", function () {
+    const canvas = document.getElementById("wishCanvas");
+    const link = document.createElement("a");
+    link.download = "Happy_New_Year_2025.png";
+    link.href = canvas.toDataURL("image/png");
+    link.click();
+});
+
+// Partager la carte
+document.getElementById("shareButton").addEventListener("click", function () {
+    const canvas = document.getElementById("wishCanvas");
+    const dataUrl = canvas.toDataURL("image/png");
+    const link = document.createElement("a");
+    link.href = dataUrl;
+    link.download = "Happy_New_Year_2025.png";
+    link.click();
+    alert("Votre carte a été partagée !");
+});
+
 
 // Surprise : afficher une alerte spéciale
 document.getElementById("surprise").addEventListener("click", function() {
     alert("🎉 Surpriiise ! Que cette année soit la meilleure de votre vie ! 🎆");
 });
-</script>
 
+// Inviter d'autres via Muhimuzi Louis
+document.getElementById("inviteButton").addEventListener("click", function () {
+    const siteUrl = "https://happy-new-year-to-all.onrender.com"; // Remplacez par votre URL
+    if (navigator.share) {
+        navigator.share({
+            title: "Happy New Year 2025",
+            text: `🎉 Je vous invite à créer vos vœux avec https://happy-new-year-to-all.onrender.com ici : ${siteUrl}`,
+            url: siteUrl,
+        });
+    } else {
+        alert(`Invitez vos amis avec ce lien : ${siteUrl}`);
+    }
+});
+</script>
