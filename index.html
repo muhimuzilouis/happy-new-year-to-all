@@ -1,3 +1,170 @@
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bonne Année 2025</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(45deg, #ff7e5f, #feb47b);
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #fff;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 4em;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 4px;
+            animation: fadeIn 3s ease-out;
+        }
+
+        .message {
+            font-size: 1.5em;
+            margin-top: 20px;
+            color: #fff;
+            animation: fadeIn 5s ease-out;
+        }
+
+        .fireworks {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+        }
+
+        .confetti {
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .confetti div {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #fff;
+            border-radius: 50%;
+            animation: fall 2s linear infinite;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px);
+            }
+            100% {
+                transform: translateY(100vh);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>Bonne Année 2025 !</h1>
+        <div class="message">
+            Que cette nouvelle année vous apporte joie, succès et bonheur !
+        </div>
+    </div>
+
+    <div class="fireworks" id="fireworks"></div>
+    <div class="confetti" id="confetti"></div>
+
+    <script>
+        // Fonction pour générer des feux d'artifice
+        function createFireworks() {
+            const fireworksContainer = document.getElementById('fireworks');
+            for (let i = 0; i < 5; i++) {
+                const firework = document.createElement('div');
+                firework.style.position = 'absolute';
+                firework.style.top = `${Math.random() * 100}vh`;
+                firework.style.left = `${Math.random() * 100}vw`;
+                firework.style.width = '15px';
+                firework.style.height = '15px';
+                firework.style.borderRadius = '50%';
+                firework.style.background = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
+                firework.style.animation = `firework 1s ease-in-out infinite`;
+                fireworksContainer.appendChild(firework);
+            }
+        }
+
+        // Fonction pour créer des confettis
+        function createConfetti() {
+            const confettiContainer = document.getElementById('confetti');
+            for (let i = 0; i < 100; i++) {
+                const confettiPiece = document.createElement('div');
+                confettiPiece.style.left = `${Math.random() * 100}vw`;
+                confettiPiece.style.animationDelay = `${Math.random() * 5}s`;
+                confettiContainer.appendChild(confettiPiece);
+            }
+        }
+
+        // Initialiser les animations
+        createFireworks();
+        createConfetti();
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
