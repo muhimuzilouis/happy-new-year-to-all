@@ -3,89 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meilleurs Vœux - ISP/Bukavu</title>
+    <title>Meilleurs Vœux 2025 - ISP/Bukavu</title>
     <style>
+        /* Corps de la page */
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(to bottom right, #2980b9, #8e44ad); /* Dégradé de fond */
+            background: linear-gradient(45deg, #ff7e5f, #feb47b, #6a11cb, #2575fc); /* Dégradé lumineux dynamique */
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite; /* Animation de dégradé */
             margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             color: white;
-            overflow: hidden; /* Empêche les barres de défilement pendant l'animation des étoiles */
+            overflow: hidden;
+            position: relative;
         }
 
+        /* Animation du fond dégradé */
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Conteneur des vœux */
         .container {
             text-align: center;
-            padding: 40px;
-            background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(5px); /* Flou d'arrière-plan (nécessite un navigateur récent) */
+            padding: 50px;
+            background-color: rgba(0, 0, 0, 0.6); /* Fond semi-transparent */
+            border-radius: 20px;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px); /* Effet de flou d'arrière-plan */
+            z-index: 10;
         }
 
         h1 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px #000000;
+            font-size: 3em;
+            margin-bottom: 30px;
+            font-family: 'Georgia', serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 15px #fff, 0 0 30px #ff3, 0 0 40px #ff8, 0 0 50px #ff8;
         }
 
         p {
-            font-size: 1.2em;
-            line-height: 1.6;
+            font-size: 1.5em;
+            line-height: 1.8;
             margin-bottom: 30px;
+            font-weight: 300;
         }
 
+        /* Animation des étoiles */
         .stars {
             position: absolute;
             width: 100%;
             height: 100%;
-            overflow: hidden;
-            z-index: -1; /* Place les étoiles derrière le contenu */
+            z-index: -2;
+            pointer-events: none; /* Les étoiles ne bloquent pas l'interaction avec les éléments principaux */
         }
 
         .star {
             position: absolute;
-            background-color: white;
+            background-color: #fff;
             border-radius: 50%;
-            animation: twinkle 2s linear infinite; /* Animation de scintillement */
+            animation: twinkle 2s infinite ease-in-out;
         }
 
         @keyframes twinkle {
-            0% { opacity: 0.2; transform: scale(1);}
-            50% { opacity: 1; transform: scale(1.2);}
-            100% { opacity: 0.2; transform: scale(1);}
+            0% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+            100% { opacity: 0.2; transform: scale(1); }
         }
 
-        /* Styles pour les confettis */
+        /* Animation des confettis */
         .confetti {
             position: absolute;
             width: 10px;
             height: 10px;
-            background-color: gold; /* Couleur par défaut des confettis */
+            background-color: gold;
             animation: confetti-fall 3s linear infinite;
+            opacity: 0;
         }
 
         @keyframes confetti-fall {
-            0% { transform: translate3d(0, -100vh, 0) rotate(0deg); opacity: 0;}
-            100% { transform: translate3d(0, 100vh, 0) rotate(360deg); opacity: 1;}
+            0% { transform: translateY(-100vh) rotate(0deg); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Mise en page mobile */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.5em;
+            }
+
+            p {
+                font-size: 1.2em;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="stars"></div>
+    <div class="stars"></div> <!-- Contenant pour les étoiles -->
     <div class="container">
-        <h1>Meilleurs Vœux</h1>
-        <p>À tous les étudiants de l'ISP/Bukavu, nous vous souhaitons une merveilleuse année remplie de succès, de joie et d'épanouissement. Que cette nouvelle année vous apporte la réussite dans vos études et la réalisation de vos projets et à toute la dynamique communautaire GDG campus isp/Bukavu.</p>
-        <p>Bonne Année !</p>
+        <h1>Meilleurs Vœux 2025</h1>
+        <p>À tous les étudiants de l'ISP/Bukavu et à tous les membres de la dynamique communautaire GDG campus/isp , nous vous adressons nos vœux les plus chaleureux pour cette nouvelle année ! Que 2025 soit synonyme de succès, d'accomplissements et de moments de joie. Que vos rêves prennent forme et que cette année soit marquée par la réussite dans vos études et vos projets.</p>
+        <p>Bonne Année à tous ! 🎉</p>
     </div>
 
     <script>
-        // Création des étoiles
+        // Générer les étoiles scintillantes
         const starsContainer = document.querySelector('.stars');
-        const numStars = 100; // Nombre d'étoiles
+        const numStars = 150; // Nombre d'étoiles
 
         for (let i = 0; i < numStars; i++) {
             const star = document.createElement('div');
@@ -98,15 +129,15 @@
             starsContainer.appendChild(star);
         }
 
-        // Création des confettis
-        const numConfetti = 50;
+        // Créer les confettis
+        const numConfetti = 100; // Nombre de confettis
         for (let i = 0; i < numConfetti; i++) {
             const confetti = document.createElement('div');
             confetti.classList.add('confetti');
             confetti.style.left = Math.random() * 100 + 'vw';
             confetti.style.animationDelay = Math.random() * 3 + 's';
-            confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`; // Couleurs aléatoires
-            document.body.appendChild(confetti); // Ajoute les confettis au body
+            confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 60%)`; // Couleur aléatoire
+            document.body.appendChild(confetti);
         }
     </script>
 </body>
