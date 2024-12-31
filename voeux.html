@@ -7,159 +7,152 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Meilleurs Vœux et Happy News!</h1>
-        <p>Chers étudiants de l'ISP/Bukavu, nous vous souhaitons le meilleur pour cette année!</p>
-        <h1><button id="newsButton"> <h4>Cliquez pour afficher les Nouvelles</h1></button></h4>
-        <div id="news" class="news"></div>
+    <div class="background">
+        <div class="container">
+            <h1>🌸 Meilleurs Vœux pour 2025! 🌸</h1>
+            <p>Que cette année soit remplie de succès, d'amour et de prospérité pour tous les étudiants de l'ISP/Bukavu !</p>
+            <button id="wishesButton" class="btn">Afficher les Vœux</button>
+            <div id="wishes" class="wishes"></div>
+        </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
 
-
 <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fond du site avec un dégradé dynamique */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f8ff;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to right, #ffecd2, #fcb69f);
     color: #333;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
-}
-
-.container {
-    text-align: center;
-    padding: 20px;
-    border: 2px solid #4CAF50;
-    border-radius: 10px;
-    background-color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
-    color: #4CAF50;
-}
-
-.news {
-    margin-top: 20px;
-    display: none;
-    border: 1px solid #ccc;
-    padding: 10px;
-    background-color: #f9f9f9;
-}
-</style>
-<script>
-
-document.getElementById('newsButton').addEventListener('click', function() {
-    const newsDiv = document.getElementById('news');
-    if (newsDiv.style.display === 'none' || newsDiv.style.display === '') {
-        newsDiv.style.display = 'block';
-        newsDiv.innerHTML = '<h2>Nos souhaits pour vous</h2><p>1. Bénédiction !</p><p>2. Succès etc.</p>';
-    } else {
-        newsDiv.style.display = 'none';
-    }
-});
-</script>
-
-<body>
-    <div class="container">
-        <h1>🌺 Meilleurs Vœux pour 2025! 🌺</h1>
-        <p>Que cette année soit remplie de joie, d'amour et de prospérité!</p>
-        <button id="wishesButton"> <h4>Cliquez pour afficher afficher les Vœux</h4></button>
-        <div id="wishes" class="wishes"></div>
-    </div>
-    <script src="script.js"></script>
-</body>
-</html>
-```
-
-<style>
-body {
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(to right, #ffebee, #fce4ec);
-    color: #4a148c;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
     overflow: hidden;
 }
 
+/* Animation du fond dynamique */
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://example.com/abstract-background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    animation: backgroundMove 10s infinite alternate;
+}
+
+/* Dégradé du container avec ombre douce */
 .container {
     text-align: center;
-    padding: 20px;
-    border: 2px solid #f50057;
-    border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    padding: 40px;
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     position: relative;
+    z-index: 10;
+    overflow: hidden;
+    animation: fadeIn 2s ease-in;
 }
 
+/* Titres et textes principaux */
 h1 {
-    font-size: 3em;
-    margin-bottom: 10px;
+    font-size: 2.8em;
+    margin-bottom: 15px;
+    color: #d32f2f;
+    font-family: 'Georgia', serif;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
+p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    color: #4a148c;
+    font-weight: 300;
+}
+
+/* Style du bouton */
+.btn {
+    background-color: #f50057;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+    text-transform: uppercase;
+}
+
+.btn:hover {
+    background-color: #d50042;
+    transform: scale(1.05);
+}
+
+/* Conteneur des vœux */
 .wishes {
     margin-top: 20px;
     display: none;
-    border: 1px solid #f50057;
-    padding: 10px;
     background-color: #ffe0f2;
-    border-radius: 5px;
+    padding: 15px;
+    border-radius: 10px;
+    border: 2px solid #f50057;
+    font-size: 1.1em;
+    color: #333;
+    transition: all 0.3s ease-in-out;
 }
 
-.flower {
-    position: absolute;
-    animation: bloom 2s forwards;
+.wishes p {
+    margin-bottom: 10px;
 }
 
-@keyframes bloom {
+@keyframes backgroundMove {
     0% {
-        transform: scale(0);
-        opacity: 0;
+        background-position: left top;
     }
     100% {
-        transform: scale(1);
+        background-position: right bottom;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    100% {
         opacity: 1;
+        transform: translateY(0);
     }
 }
 </style>
+
 <script>
+
 document.getElementById('wishesButton').addEventListener('click', function() {
     const wishesDiv = document.getElementById('wishes');
     if (wishesDiv.style.display === 'none' || wishesDiv.style.display === '') {
         wishesDiv.style.display = 'block';
-        wishesDiv.innerHTML = '<h2>Vœux pour Vous!</h2><p>1. Santé et Bonheur!</p><p>2. Amour et Amitié!</p><p>3. Réussite et Prospérité!</p>';
-        generateFlowers();
+        wishesDiv.innerHTML = `
+            <h2>Nos Vœux pour Vous!</h2>
+            <p>1. 🌟 Santé et Bonheur pour toute l'année!</p>
+            <p>2. 💖 Amour, Amitié et Harmonie!</p>
+            <p>3. 🚀 Réussite dans vos études et projets!</p>
+            <p>4. 🎉 Succès dans vos examens et opportunités futures!</p>
+        `;
     } else {
         wishesDiv.style.display = 'none';
     }
 });
 
-function generateFlowers() {
-    const container = document.querySelector('.container');
-    for (let i = 0; i < 10; i++) {
-        const flower = document.createElement('div');
-        flower.className = 'flower';
-        flower.style.backgroundImage = 'url("https://example.com/your-flower-image.png")'; // Remplacez par l'URL de votre image de fleur
-        flower.style.width = '50px';
-        flower.style.height = '50px';
-        flower.style.top = Math.random() * 100 + 'vh';
-        flower.style.left = Math.random() * 100 + 'vw';
-        flower.style.position = 'absolute';
-        flower.style.backgroundSize = 'contain';
-        flower.style.backgroundRepeat = 'no-repeat';
-        flower.style.animationDelay = Math.random() * 2 + 's';
-        container.appendChild(flower);
-
-        flower.addEventListener('animationend', () => {
-            container.removeChild(flower);
-        });
-    }
-}
 </script>
