@@ -310,3 +310,104 @@ document.getElementById("photoInput").addEventListener("change", function (event
     }
 });
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fleurs de Nouvelle Année</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="flower" style="left: 10%"></div>
+    <div class="flower" style="left: 20%"></div>
+    <div class="flower" style="left: 30%"></div>
+    <div class="flower" style="left: 40%"></div>
+    <div class="flower" style="left: 50%"></div>
+    <div class="flower" style="left: 60%"></div>
+    <div class="flower" style="left: 70%"></div>
+    <div class="flower" style="left: 80%"></div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #282828;
+    overflow: hidden; /* Empêche la barre de défilement */
+    height: 100vh;
+    position: relative;
+}
+
+.flower {
+    position: absolute;
+    top: -50px; /* Les fleurs commencent au-dessus de la page */
+    width: 30px;
+    height: 30px;
+    background-color: pink; /* Vous pouvez changer la couleur selon vos préférences */
+    border-radius: 50%;
+    animation: fall 5s linear infinite; /* Animation de chute infinie */
+}
+
+@keyframes fall {
+    0% {
+        top: -50px; /* Position initiale au-dessus de la page */
+        opacity: 1;
+    }
+    100% {
+        top: 100vh; /* La fleur tombe jusqu'en bas de la page */
+        opacity: 0; /* La fleur disparaît au fur et à mesure qu'elle tombe */
+    }
+}
+
+</style>
+
+<script>
+  // Ajouter des fleurs aléatoirement avec des délais et positions variés
+document.addEventListener('DOMContentLoaded', () => {
+    let flowerCount = 50; // Nombre total de fleurs
+    let containerHeight = window.innerHeight;
+    
+    for (let i = 0; i < flowerCount; i++) {
+        let flower = document.createElement('div');
+        flower.classList.add('flower');
+        
+        // Position horizontale aléatoire
+        flower.style.left = Math.random() * 100 + '%';
+        
+        // Ajouter un délai aléatoire pour chaque fleur
+        flower.style.animationDelay = Math.random() * 5 + 's';
+        
+        // Ajouter un délai d'animation plus long pour la diversité
+        flower.style.animationDuration = Math.random() * 5 + 3 + 's'; // entre 3 et 8 secondes
+        
+        document.body.appendChild(flower);
+    }
+});
+
+</script>
