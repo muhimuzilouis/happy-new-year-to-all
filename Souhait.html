@@ -366,7 +366,7 @@ function generateImage(message, img) {
     document.getElementById('whatsappBtn').onclick = function () {
         const phoneNumber = prompt("Entrez le numéro WhatsApp de votre ami (avec l'indicatif, exemple: +243) :");
         if (phoneNumber) {
-            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent("Voici ma carte de vœux pour 2025 !")} ${encodeURIComponent(imageUrl)}`;
+            const whatsappUrl = `https://wa.me/${+243973628719}?text=${encodeURIComponent("Voici ma carte de vœux pour 2025 !")} ${encodeURIComponent(imageUrl)}`;
             window.open(whatsappUrl, '_blank');
         }
     };
